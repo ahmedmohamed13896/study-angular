@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <h2 class="text-center my-4">
+    Employee list
+  </h2>
+  <ul class="w-50 mx-auto" *ngIf="employees.length; else listNotFound">
+    <li *ngFor="let employee of employees">{{employee.name}}</li>
+  </ul>
+
+  <ng-template #listNotFound>
+    <h5 class="text-danger">
+      Employee list not found <br>
+      {{errorMessage}}
+    </h5>
+  </ng-template>
+</div>

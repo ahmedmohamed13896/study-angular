@@ -1,0 +1,73 @@
+<input type="text" [disabled]="isDisabled" value={{name}}>
+
+<h2 class="text-success">test</h2>
+
+<h2 [class]="successClass">class binding</h2>
+
+<h2 [class]="successClass" class="text-special">class binding</h2>
+
+<h2 [class.text-danger]="hasError" [class.text-success]="!hasError">class binding</h2>
+
+<h2 [ngClass]="classes">class binding</h2>
+
+<h2 [style.color]="hasError ? 'red' : 'green'">style binding</h2>
+
+<h2 [style.color]="classColor">style binding 2</h2>
+<h2 [ngStyle]="styles">style binding 3</h2>
+
+<input type="text" value="" (input)="handleChange($event)">
+
+
+<h2>
+ template reference variable
+</h2>
+<input type="text" #myInput>
+<button  (click)="logMessage(myInput.value)">log</button>
+<br>
+<br>
+
+<input type="text" [(ngModel)]="inputValue">
+{{inputValue}}
+
+
+<br>
+
+<h2>Structural Directives</h2>
+
+<!-- using if else in angular using ng-template tag -->
+<div *ngIf="displayName; then thenBlock else elseBlock" > using if</div>
+
+<ng-template #thenBlock>
+  <div>
+    display name is true
+  </div>
+</ng-template>
+<ng-template #elseBlock>
+  <div>
+    display name is false
+  </div>
+</ng-template>
+
+
+<!-- using ngSwitch -->
+<div [ngSwitch]="pickedColor">
+  <div *ngSwitchCase="'red'">color red</div>
+  <div *ngSwitchCase="'blue'">color blue</div>
+  <div *ngSwitchCase="'green'">color green</div>
+  <div *ngSwitchDefault>no color</div>
+</div>
+
+<!-- using *ngFor -->
+<div *ngFor="let color of colors; index as i; first as f" [style.color]="color">
+  <span> {{f}} {{i +"- "+ color}}</span>
+</div>
+
+
+
+<!-- recive data from parent -->
+
+<h2>
+  {{pData}}
+</h2>
+
+<button (click)="fireClick()">send to parent</button>

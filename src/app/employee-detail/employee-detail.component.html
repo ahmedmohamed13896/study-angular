@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <h2 class="text-center my-4">
+    Employee details
+  </h2>
+
+  <table class="table mx-auto w-50" *ngIf="employees.length; else detailsNotFound">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{employee.id}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.age}}</td>
+        <td>{{employee.gender}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #detailsNotFound>
+    <h5 class="text-danger">
+      Employee details not found <br>
+      {{errorMessage}}
+    </h5>
+  </ng-template>
+</div>

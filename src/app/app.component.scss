@@ -1,0 +1,14 @@
+
+main{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  .main-container{
+    flex-grow: 1;
+    width: 100%;
+  }
+}
