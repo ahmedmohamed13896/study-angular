@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row ">
     <div class="col-xl-3 col-md-4 col-sm-6 d-flex flex-column  mb-3 text-center" *ngFor="let movie of trendingMovies; index as i" >
-      <div (click)="onSelect(movie)" class="card d-flex flex-column flex-grow-1" >
+      <div (click)="onSelect(movie)" [class.selected]="isSelected(movie)" class="card d-flex flex-column flex-grow-1" >
         <img class="card-img-top"  [src]="'https://image.tmdb.org/t/p/w500/'+movie.poster_path" class="img-fluid" alt="">
         <div class="card-body flex-grow-1">
           <h5 class="card-title" *ngIf="movie.title; else movieTitle">{{movie.title}}</h5>

@@ -1,3 +1,15 @@
 .card{
   cursor: pointer;
+  transition: all ease-in-out .3s;
+  &:hover{
+    background-color: #dfdfdf;
+    color: #333;
+  }
+
 }
+.selected{
+  background-color: #4c4c4c !important;
+  color: #FFF !important;
+}
+
+

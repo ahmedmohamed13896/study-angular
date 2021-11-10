@@ -1,7 +1,17 @@
 <div class="text-center p-4">
-  <h2 class="mb-3">movie ID is: {{movie.id}}</h2>
+  <h2 class="mb-3">{{movie.title || movie.name }}</h2>
 
-  <ul class="w-50 mx-auto text-start list-group" *ngIf="movieLength">
+
+  <div class="d-flex justify-content-between align-items-center mw-1000 w-100  mx-auto">
+    <button class="btn btn-primary text-white font-weight-bold me-auto" (click)="goToMovies()"> Back to movies</button>
+    <button class=" btn btn-info text-white font-weight-bold m-4"  (click)="logMovie()"> log all details</button>
+  </div>
+
+
+  <ul class="w-100 mw-1000 mx-auto text-start list-group" *ngIf="movieLength">
+    <li class="list-group-item text-center">
+      <img [src]="'https://image.tmdb.org/t/p/w500/'+ movie.backdrop_path" alt="" class="w-100 img-fluid">
+    </li>
     <li class="list-group-item">
       <b>id:</b> {{movie.id}}
     </li>
@@ -9,18 +19,20 @@
      <b>title:</b> {{movie.title || movie.name }}
     </li>
     <li class="list-group-item">
-      <b>release_date:</b> {{movie.release_date}}
+      <b>release_date:</b> {{movie.release_date || 'Unknown'}}
+    </li>
+    <li class="list-group-item">
+      <b>overview:</b> {{movie.overview}}
     </li>
   </ul>
 
 
-  <button class=" btn btn-info text-white font-weight-bold m-4" [disabled]="" (click)="getMovie()"> log all details</button>
-
-  <button class="btn btn-primary text-white font-weight-bold" (click)="goToMovies()"> Back to movies</button>
-
-
-  <div class="d-flex align-items-center justify-content-between w-50 mx-auto">
-    <button class="btn btn-secondary" (click)="goPrev($event)" [disabled]="currentIndex == 0 ? true:false" >&lt; Go Prev</button>
-    <button class="btn btn-secondary" (click)="goNext($event)" [disabled]="currentIndex + 1 == moviesArray.length ? true:false">Go Next &gt;</button>
+  <div class="py-4 d-flex align-items-center justify-content-between mw-1000 w-100 mx-auto">
+    <div>
+      <button class="btn btn-secondary" (click)="goPrev()" *ngIf="showPrev" >&lt; Go Prev</button>
+    </div>
+    <div>
+      <button class="btn btn-secondary" (click)="goNext()" *ngIf="showNext">Go Next &gt;</button>
+    </div>
   </div>
 </div>

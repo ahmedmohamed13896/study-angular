@@ -1,6 +1,6 @@
 import { MoviesService } from './../movies.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
@@ -10,22 +10,36 @@ import { Router } from '@angular/router';
 export class MoviesComponent implements OnInit {
 
   trendingMovies :any[] =[];
+  selectedId :any;
 
-  constructor(private _MoviesService:MoviesService, private moveiRoute: Router) { }
+  constructor(private _MoviesService:MoviesService, private moveiRoute: Router, private activeRoute : ActivatedRoute) { }
+
 
   ngOnInit(): void {
+    // USING PARAMMAP OBSERVABLE OF THE ACTIVEROUTER TO SUBSCRIBE ON THE PARAMETER ID AND CHECK IF IT IS CHANGED
+    this.activeRoute.paramMap.subscribe({
+      next:(params:ParamMap)=>{
+        this.selectedId = params.get('id');
+      }
+    })
+
     this._MoviesService.getTrendingmovies().subscribe( {
       next: (data)=>{
-        this.trendingMovies = data.results
+        this.trendingMovies = data.results;
       },
       error:(error)=>{
         console.log(error);
       }
     })
+
+
   }
 
   onSelect(movie:any){
-    this.moveiRoute.navigate(['/movies', movie.id])
+    this.moveiRoute.navigate([movie.id],{relativeTo:this.activeRoute});
   }
 
+  isSelected(movie:any){
+    return this.selectedId == movie.id
+  }
 }
