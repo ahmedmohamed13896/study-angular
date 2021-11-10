@@ -1,1 +1,26 @@
-<p>movie works!</p>
+<div class="text-center p-4">
+  <h2 class="mb-3">movie ID is: {{movie.id}}</h2>
+
+  <ul class="w-50 mx-auto text-start list-group" *ngIf="movieLength">
+    <li class="list-group-item">
+      <b>id:</b> {{movie.id}}
+    </li>
+    <li class="list-group-item">
+     <b>title:</b> {{movie.title || movie.name }}
+    </li>
+    <li class="list-group-item">
+      <b>release_date:</b> {{movie.release_date}}
+    </li>
+  </ul>
+
+
+  <button class=" btn btn-info text-white font-weight-bold m-4" [disabled]="" (click)="getMovie()"> log all details</button>
+
+  <button class="btn btn-primary text-white font-weight-bold" (click)="goToMovies()"> Back to movies</button>
+
+
+  <div class="d-flex align-items-center justify-content-between w-50 mx-auto">
+    <button class="btn btn-secondary" (click)="goPrev($event)" [disabled]="currentIndex == 0 ? true:false" >&lt; Go Prev</button>
+    <button class="btn btn-secondary" (click)="goNext($event)" [disabled]="currentIndex + 1 == moviesArray.length ? true:false">Go Next &gt;</button>
+  </div>
+</div>

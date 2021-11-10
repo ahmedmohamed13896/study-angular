@@ -1,14 +1,14 @@
 <div class="container-fluid">
   <div class="row ">
     <div class="col-xl-3 col-md-4 col-sm-6 d-flex flex-column  mb-3 text-center" *ngFor="let movie of trendingMovies; index as i" >
-      <div class="card d-flex flex-column flex-grow-1" >
+      <div (click)="onSelect(movie)" class="card d-flex flex-column flex-grow-1" >
         <img class="card-img-top"  [src]="'https://image.tmdb.org/t/p/w500/'+movie.poster_path" class="img-fluid" alt="">
         <div class="card-body flex-grow-1">
           <h5 class="card-title" *ngIf="movie.title; else movieTitle">{{movie.title}}</h5>
           <ng-template #movieTitle>
-            <h5 class="card-title">title not rendered from api</h5>
+            <h5 class="card-title ">{{movie.name}}</h5>
           </ng-template>
-          <p class="card-text ">{{movie.overview | wordcount:40}}</p>
+          <p class="card-text ">{{movie.overview | wordcount:20}}</p>
         </div>
       </div>
 

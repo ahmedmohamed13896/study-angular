@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmployeeService {
 
-  private _url :string = '/assets/data/employee.json';
+  private _url :string = './assets/data/employee.json';
 
   constructor(private http: HttpClient ) { }
 

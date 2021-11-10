@@ -11,7 +11,7 @@ export class MoviesService {
 
    }
    getTrendingmovies():Observable<any>{
-     return this.http.get('http://api.themoviedb.org/3/trending/movies/week?api_key=f1aca93e54807386df3f6972a5c33b50');
+     return this.http.get('https://api.themoviedb.org/3/trending/movies/week?api_key=f1aca93e54807386df3f6972a5c33b50');
    }
 
 }
