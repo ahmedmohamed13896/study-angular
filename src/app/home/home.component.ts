@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
     this._MoviesService.getTrendingmovies().subscribe( {
       next: (data)=>{
         this.trendingMovies = data.results
-        console.log(this.trendingMovies);
       },
       error:(error)=>{
         console.log(error);

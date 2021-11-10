@@ -16,6 +16,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { MoviesComponent } from './movies/movies.component';
+import { MovieComponent } from './movie/movie.component';
+import { WordcountPipe } from './wordcount.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { NotfoundComponent } from './notfound/notfound.component';
     NavbarComponent,
     GalleryComponent,
     ContactsComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    MoviesComponent,
+    MovieComponent,
+    WordcountPipe
   ],
   imports: [
     BrowserModule,

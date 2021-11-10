@@ -1,3 +1,4 @@
+import { MovieComponent } from './movie/movie.component';
 import { TestComponent } from './test/test.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
@@ -12,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path:'', redirectTo:'home',pathMatch:'full'},
   { path:'home', component: HomeComponent },
+  { path:'movies/:id', component: MovieComponent },
   { path:'test', component: TestComponent },
   { path:'employee-detail', component: EmployeeDetailComponent },
   { path:'employee-list', component: EmployeeListComponent },
