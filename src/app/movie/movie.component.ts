@@ -91,4 +91,9 @@ export class MovieComponent implements OnInit {
     this.currentIndex + 1 == this.moviesArray.length ? this.showNext =  false : this.showNext =true;
   }
 
+
+  showOverview(){
+    this.router.navigate(['overview'] , {relativeTo: this.movieRoute})
+  }
+
 }

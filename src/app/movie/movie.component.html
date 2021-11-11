@@ -27,12 +27,16 @@
   </ul>
 
 
-  <div class="py-4 d-flex align-items-center justify-content-between mw-1000 w-100 mx-auto">
-    <div>
+  <div class="py-4 d-flex flex-wrap align-items-center justify-content-between mw-1000 w-100 mx-auto">
+    <div class="p-3">
       <button class="btn btn-secondary" (click)="goPrev()" *ngIf="showPrev" >&lt; Go Prev</button>
     </div>
-    <div>
+    <div class="mx-auto p-3 flex-grow">
+      <button class="btn btn-secondary" (click)="showOverview()">show overview</button>
+    </div>
+    <div class="p-3">
       <button class="btn btn-secondary" (click)="goNext()" *ngIf="showNext">Go Next &gt;</button>
     </div>
   </div>
+    <router-outlet></router-outlet>
 </div>

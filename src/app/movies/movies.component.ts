@@ -1,5 +1,5 @@
 import { MoviesService } from './../movies.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
@@ -19,6 +19,7 @@ export class MoviesComponent implements OnInit {
     // USING PARAMMAP OBSERVABLE OF THE ACTIVEROUTER TO SUBSCRIBE ON THE PARAMETER ID AND CHECK IF IT IS CHANGED
     this.activeRoute.paramMap.subscribe({
       next:(params:ParamMap)=>{
+
         this.selectedId = params.get('id');
       }
     })
@@ -35,8 +36,19 @@ export class MoviesComponent implements OnInit {
 
   }
 
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+  //   //Add '${implements OnChanges}' to the class.
+  //   for (const propName in changes) {
+  //     const chng = changes[propName];
+  //     const cur  = JSON.stringify(chng.currentValue);
+  //     const prev = JSON.stringify(chng.previousValue);
+  //     console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+  //   }
+  // }
+
   onSelect(movie:any){
-    this.moveiRoute.navigate([movie.id],{relativeTo:this.activeRoute});
+    this.moveiRoute.navigate( [movie.id],{relativeTo:this.activeRoute });
   }
 
   isSelected(movie:any){

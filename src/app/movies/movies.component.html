@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" appSpy>
   <div class="row ">
     <div class="col-xl-3 col-md-4 col-sm-6 d-flex flex-column  mb-3 text-center" *ngFor="let movie of trendingMovies; index as i" >
       <div (click)="onSelect(movie)" [class.selected]="isSelected(movie)" class="card d-flex flex-column flex-grow-1" >

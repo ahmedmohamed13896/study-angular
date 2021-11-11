@@ -19,6 +19,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieComponent } from './movie/movie.component';
 import { WordcountPipe } from './wordcount.pipe';
+import { SpyDirective } from './spy.directive';
+import { MovieOverviewComponent } from './movie-overview/movie-overview.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { WordcountPipe } from './wordcount.pipe';
     NotfoundComponent,
     MoviesComponent,
     MovieComponent,
-    WordcountPipe
+    WordcountPipe,
+    SpyDirective,
+    MovieOverviewComponent
   ],
   imports: [
     BrowserModule,
