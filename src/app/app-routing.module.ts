@@ -1,3 +1,4 @@
+import { RegisterComponent } from './register/register.component';
 import { MovieOverviewComponent } from './movie-overview/movie-overview.component';
 import { MovieComponent } from './movie/movie.component';
 import { TestComponent } from './test/test.component';
@@ -13,6 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path:'', redirectTo:'movies',pathMatch:'full'},
+  { path:'register', component: RegisterComponent },
   { path:'movies', component: HomeComponent },
   { path:'movies/:id', component: MovieComponent,children: [{path:'overview',component:MovieOverviewComponent}]},
   { path:'test', component: TestComponent },

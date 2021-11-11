@@ -21,6 +21,7 @@ import { MovieComponent } from './movie/movie.component';
 import { WordcountPipe } from './wordcount.pipe';
 import { SpyDirective } from './spy.directive';
 import { MovieOverviewComponent } from './movie-overview/movie-overview.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MovieOverviewComponent } from './movie-overview/movie-overview.componen
     MovieComponent,
     WordcountPipe,
     SpyDirective,
-    MovieOverviewComponent
+    MovieOverviewComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
