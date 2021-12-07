@@ -1,31 +1,93 @@
 <div class="container-fluid">
-  <h2 class="text-center my-4">
-    Employee details
-  </h2>
 
-  <table class="table mx-auto w-50" *ngIf="employees.length; else detailsNotFound">
+  <div class="d-flex justify-content-center py-4 px-2 border-bottom mb-4">
+    <button class="text-center btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
+      Add Employee
+    </button>
+  </div>
+  <table class="table mx-auto " *ngIf="employees?.length; else detailsNotFound">
     <thead>
       <tr>
         <th>Id</th>
-        <th>Name</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
         <th>Age</th>
-        <th>Gender</th>
+        <th class="text-end">Edit/Delete</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let employee of employees">
         <td>{{employee.id}}</td>
-        <td>{{employee.name}}</td>
+        <td>{{employee.fname}}</td>
+        <td>{{employee.lname}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.mobile}}</td>
         <td>{{employee.age}}</td>
-        <td>{{employee.gender}}</td>
+        <td>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#addEmployeeModal" (click)="onEdit(employee)">Edit</button>
+            <button (click)="deleteEmployee(employee)" class="btn btn-danger ms-3">Delete</button>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
   <ng-template #detailsNotFound>
     <h5 class="text-center">
       <span class="text-danger">
-        {{errorMessage}}
+        {{'Something wrong in API!'}}
       </span>
     </h5>
   </ng-template>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addEmployeeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addEmployeeModalLabel">Add Employee Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- form -->
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+            <label for="fname" class="form-label">First Name</label>
+            <input type="text" formControlName="fname" class="form-control" id="fname" >
+          </div>
+
+          <div class="mb-3">
+            <label for="lname" class="form-label">Last Name</label>
+            <input type="text" formControlName="lname" class="form-control" id="lname" >
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" formControlName="email" class="form-control" id="email" >
+          </div>
+
+          <div class="mb-3">
+            <label for="mobile" class="form-label">Mobile</label>
+            <input type="text" formControlName="mobile" class="form-control" id="mobile" >
+          </div>
+
+          <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="number" formControlName="age" class="form-control" id="age" >
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="close"  data-bs-dismiss="modal" (click)="onClose()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postEmployeeDetails()">Add</button>
+        <button type="button" class="btn btn-primary" (click)="updateEmployeeDetails()">Update</button>
+      </div>
+    </div>
+  </div>
 </div>
